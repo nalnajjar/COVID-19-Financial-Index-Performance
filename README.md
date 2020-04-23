@@ -1,1 +1,1 @@
-# COVID-19-Financial-Index-Performance
+# COVID-19 and Financial-Index-Performance
