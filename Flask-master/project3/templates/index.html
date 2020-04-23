@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+ 
+    <head>
+      
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>COVID-19 Spread and Stock Market Performance</title>
+
+        <!-- Anime.js -->
+        <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+
+        <!-- CSS (Bootstrap and custom) -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
+        <script src="https://use.typekit.net/nlq1kdt.js"></script>
+        <script>try{Typekit.load({ async: true });}catch(e){}</script> 
+
+        <!-- Plotly -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="{{ url_for('static', filename='js/plots_2.js') }}"></script>
+
+        <!-- Leaflet CSS & JS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+        integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin=""/>
+
+        <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+        integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+        crossorigin=""></script>
+
+
+        <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+        integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+        crossorigin=""></script>
+
+        <style>
+          div.ex1 {
+            background-color: rgb(188, 188, 252);
+            width: 1680px;
+            height: 900px;
+            overflow: scroll;
+          }
+        </style>
+    
+  </head>
+  <body>
+    <div class="ex1">
+      
+      <!-- Overall Grid -->
+      <div id="body">
+
+          <!-- Map -->
+          <!-- <div class="col-md-12"> -->
+            <div style= "height: 375px; width: 1680px;">
+              <div id="map">
+            </div>  
+            <div class="row">
+              <div class="col-md-12">
+                <!-- Leaflet map -->
+                <div id="map"></div>
+              </div>
+            </div>
+        <!-- Header -->
+        <div id="title">
+          <div class="col-md-12">
+            <h1>COVID-19 Spread and Stock Market Performance</h1>
+          </div>
+        </div>
+        <!-- Sub-header -->
+        <div id="sub-header">
+          <div class="col-md-8">
+            <h3>Project 3: Nate, Alejandra, Andrew, Krystal</h3>
+            <p id="body">Within a couple of months, the coronavirus outbreak has gone from a niche item of global health news to the story of our time. Of course, there are thousands of sub-stories underneath the overwhelming umbrella of COVID-19. </p>
+            <p id="body">We have chosen to focus on the reactions of three major markets to the pandemic. In order to make the most relevant comparisons, we have chosen the financial indices associated with three countries experiencing and responding to the outbreak in divergent ways.  </p>
+            <p id="body">We will focus on the Dow Jones Industrial Average (United States of America), the Financial Times Stock Exchange 100 Index (United Kingdom), and the Korea Composite Stock Price Index (South Korea).</p>
+          </div>
+        </div>
+
+
+        <!-- second sub header -->
+        <div id="sub-header">
+          <div class="col-md-6">
+            <h3>Covid-19 & Stocks Map</h3>
+            <p id="body">The colors of the circles represent financial loss categories. Red indicates losses of over 20% in the last month. Yellow indicates losses between 10-20%. Green indicates losses under 10%. Click on the circles to see more information on the focus countries. </p>
+          </div>
+        </div>
+
+        <!-- third sub header -->
+        <div id="sub-header">
+          <div class="col-md-6">
+            <h3>Charts Comparing Covid-19 Cases and Stock Index Performance by Country</h3>
+          </div>
+        </div>
+       
+        <!--Plotly charts-->
+        <div id="chartRow">
+          <!-- Plot USA -->
+          <div class="col-md-8">
+            <h5>United States Covid-19 cases vs DOW Jones</h5>
+            <div id="plot-usa"></div>
+            
+          </div>
+          
+        </div>
+        <div id="chartRow">
+          <!-- Plot S Korea -->
+          <div class="col-md-8">
+            <h5>South Korea Covid-19 cases vs KOSPI Index</h5>
+            <div id="plot-kr"></div>
+            
+          </div>
+        </div>
+        <div id="chartRow">  
+          <!-- Plot UK -->
+          <div class="col-md-8">
+            <h5>United Kingdom Covid-19 cases vs FTSE Index</h5>
+            <div id="plot-uk"></div>
+            
+          </div>
+          <div id="findings">
+            <div class="col-md-8">
+              <p> These charts show unanimous financial index losses since the beginning of each country's Covid-19 outbreak. From 3/2/20 to 4/2/20, the Dow Jones and the FTSE lost 24% and 23% respectively, while the KOSPI only lost about 16%. In the United States, losses of 20% from the peak of the index are the sign of a bear market, and potential recession.</p>
+
+              <p> Many factors contribute to the fluctuation of the stock market aside from the volume of cases. For instance, major government announcements and initiatives (or lack thereof) have coincided with rapid market activity.</p>
+              
+              <p> While we cannot assign causality, it appears as though South Korea, which took early, aggressive steps to stem the tide of the virus, has suffered substantially lower financial losses compared to the UK & the US. Just last week, the United States passed China & Italy as the country with the most confirmed infections.</p>
+            </div>
+          </div>
+          
+        </div>
+        <div id="chartRow">  
+          <!-- Plot Global -->
+          <div class="col-md-8">
+            <h5>Global COVID-19 Daily Cases</h5>
+            <div id="plot-covid"></div>
+          </div>
+        </div>
+        <div id="body">  
+          <!-- Links to Data Sources -->
+          <div class="col-md-8">
+            <h5> Data Sources </h5>
+          <div class="col-md-8">
+            <a href="https://www.ecdc.europa.eu/en/geographical-distribution-2019-ncov-cases">European Centre for Disease Prevention and Control</a>
+          </div>
+          <div class="col-md-8">  
+            <a href="https://www.sharecast.com/index/Dow_Jones_IA/prices">ShareCast: Dow Jones</a> 
+          </div>
+          <div class="col-md-8">  
+            <a href="https://www.sharecast.com/index/FTSE_100/prices">ShareCast: FTSE Index</a> 
+          </div>
+          <div class="col-md-8">  
+            <a href="https://www.investing.com/indices/kospi-historical-data">Investing: KOSPI Index</a> 
+          </div>
+          <div class="col-md-8">  
+            <a href="https://github.com/KrystalWang070/Flask">GitHub</a> 
+          </div>
+          
+          
+        </div>
+
+        <div id="body">  
+          <!-- Links to our extra work -->
+          <div class="col-md-8">
+            <h5> Other Resources </h5>
+          <div class="col-md-8">  
+            <a href="{{ url_for('animation') }}">Animation</a> 
+          </div>
+          <div class="col-md-8">  
+            <a>USA Data Restful API</a> 
+          </div>
+          <div class="col-md-8">  
+            <a>Korean Data Restful API</a> 
+          </div>
+          <div class="col-md-8">  
+            <a>UK Data Restful API</a> 
+          </div>
+          
+        </div>
+
+
+
+        
+      
+    
+      <script>
+        if (window.location.host.indexOf('github.io') !== -1 && window.location.protocol !== "https:") {
+          window.location.protocol = "https";
+        }
+      </script>    
+    
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+         <!-- API Key -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/config.js') }}"></script>  
+        
+        <!-- Leaflet logic -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/logic.js') }}"></script>
+         
+         <!-- Leaflet extra markers -->
+        <script src="{{ url_for('static', filename='css/leaflet.extra-markers.min.css') }}"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/leaflet.extra-markers.min.css') }}">
+    </div>
+  </body>
+</html>

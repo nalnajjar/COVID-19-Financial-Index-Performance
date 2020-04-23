@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>USA Restful API</title>
+</head>
+<body>
+<script>
+fetch('http://127.0.0.1:5000/api/kr')
+  .then((response) => {
+    return response.json();
+  })
+  .then((json) => {
+    console.log(json);
+  });
+</script>
+</body>
+</html>
