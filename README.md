@@ -1,4 +1,4 @@
-# Project 3
+# Project 3 - COVID-19 & Financial Index Performance (Updated for Presentation 4/4/20)
 ## Nate Al-Najjar, Alejandra Rosa, Andrew Suprenant, Krystal Wang
 
 [Project plan (Google Doc)](https://docs.google.com/document/d/1XgxWmWTOgOnLjHSWXo7tDnfdPqjz_MkPYrIdHVtgY54/edit#)
