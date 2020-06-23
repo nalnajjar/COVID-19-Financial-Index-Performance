@@ -6,7 +6,7 @@ Website: https://project3finaltest.herokuapp.com/
 
 ## Introduction:
 
-Within a couple of months, the coronavirus  has gone from a niche item of global health news to the story of our time. Of course, there are thousands of sub-stories underneath the overwhelming umbrella of COVID-19.
+Within a couple of months, the coronavirus outbreak has gone from a niche item of global health news to the story of our time. Of course, there are thousands of sub-stories underneath the overwhelming umbrella of COVID-19.
 
 We have chosen to focus on the reactions of three major markets to the pandemic. In order to make the most relevant comparisons, we have chosen the financial indices associated with three countries experiencing and responding to the outbreak in divergent ways.
 
