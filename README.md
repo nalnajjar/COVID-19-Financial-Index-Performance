@@ -14,7 +14,7 @@ We will focus on the Dow Jones Industrial Average (United States of America), th
 
 ## Covid-19 & Stocks Map
 
-The colors of the circles represent financial loss categories.  indicates losses of over 20% in the last month. Yellow indicates losses between 10-20%. Green indicates losses under 10%. Click on the circles to see more information on the focus countries.
+The colors of the circles represent financial loss categories.  indicates losses of over 20% in the last month.  indicates losses between 10-20%. Green indicates losses under 10%. Click on the circles to see more information on the focus countries.
 
 ## Charts Comparing Covid-19 Cases and Stock Index Performance by Country
 
